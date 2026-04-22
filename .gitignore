@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv/
+venv/
+*.log
+.DS_Store
+Thumbs.db
+
+# Local / generated files you may not want in GitHub
+outputs/*.csv
+outputs/*.xlsx
+outputs/*.tmp
