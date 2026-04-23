@@ -1,0 +1,2 @@
+﻿outage_id, start_time, end_time, service_or_app, business_function, severity, customer_impact, summary, root_cause_category, controls_or_gaps_noted, rto_breached, vendor_involved
+INC-104883, 2026-01-18T02:14:00, 2026-01-18T03:02:00, EDI Gateway, Supplier Integration, Sev1, Outage," ""Inbound ASN messages stopped processing causing downstream receiving delays.""", Vendor," ""No automated failover; monitoring alert delayed.""", true," ""Third-party EDI provider"""

@@ -1,0 +1,7 @@
+﻿outage_id,start_time,end_time,duration_minutes,business_function,service_or_app,summary,root_cause_category,severity,customer_impact,security_related,data_integrity_issue,systems_downstream_impacted
+INC-0001,2025-11-03T09:10:00,2025-11-03T09:55:00,45,Identity & Access Management,SSO / Identity Provider,Users unable to authenticate; widespread login failures,Identity/Access,High,Outage,FALSE,FALSE,Email;VPN;Intranet
+INC-0002,2025-10-14T02:00:00,2025-10-14T04:30:00,150,Order Processing,ERP Platform,Batch jobs failed and order entry delayed,App Defect,Sev1,Degradation,FALSE,FALSE,WMS;Finance
+INC-0003,2025-09-22T13:15:00,2025-09-22T16:30:00,195,Supplier Integration,EDI Gateway,Inbound/outbound EDI transmissions stopped,Integration,High,Outage,FALSE,FALSE,ASN Processing;PO Transmission
+INC-0004,2025-08-05T11:40:00,2025-08-05T12:25:00,45,Network Infrastructure,Core Network,Connectivity loss to multiple services,Network,High,Outage,FALSE,FALSE,Multiple sites
+INC-0005,2025-07-18T07:00:00,2025-07-18T11:00:00,240,Cloud Infrastructure,Cloud Region Services,Region-level instability caused app downtime,Cloud Provider,Sev1,Outage,FALSE,FALSE,Hosted Apps;APIs
+INC-0006,2025-06-10T08:30:00,2025-06-10T12:10:00,220,Cybersecurity,File Servers,Encrypted file shares detected; recovery initiated,Security,Sev1,Outage,TRUE,TRUE,Multiple departments

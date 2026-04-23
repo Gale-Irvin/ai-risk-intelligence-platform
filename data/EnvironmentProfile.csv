@@ -1,0 +1,2 @@
+﻿organization_name,industry,primary_cloud,on_premise_datacenters,identity_platform,dr_strategy,primary_business_functions,critical_systems
+Company Name,healthcare_distribution,Azure,2,ActiveDirectory,warm_site,manufacturing;distribution;order_processing,ERP;warehouse_management;identity;network

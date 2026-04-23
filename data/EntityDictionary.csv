@@ -1,0 +1,13 @@
+﻿entity_id,entity_name,entity_type,aliases,notes,active
+ENT-0001,Amazon Web Services,cloud_provider,aws|amazon web services|ec2|s3|route 53|cloudfront,Cloud provider keywords,TRUE
+ENT-0002,Microsoft Azure,cloud_provider,azure|microsoft azure|entra|azure ad|aks|app service,Cloud provider keywords,TRUE
+ENT-0003,Google Cloud,cloud_provider,gcp|google cloud|cloud run|bigquery,Cloud provider keywords,TRUE
+ENT-0004,Okta,identity_provider,okta|okta sso|okta identity,IdP keywords,TRUE
+ENT-0005,Microsoft Entra ID,identity_provider,entra|entra id|azure ad|aad|microsoft entra,IdP keywords,TRUE
+ENT-0006,Ping Identity,identity_provider,ping|ping identity|pingone|pingfederate,IdP keywords,TRUE
+ENT-0007,CrowdStrike,security_vendor,crowdstrike|falcon,Security vendor keywords,TRUE
+ENT-0008,Palo Alto Networks,security_vendor,palo alto|pan-os|prisma,Security vendor keywords,TRUE
+ENT-0009,Zscaler,security_vendor,zscaler|zia|zpa,Security vendor keywords,TRUE
+ENT-0010,ServiceNow,saas,servicenow|service now,SaaS keywords,TRUE
+ENT-0011,SAP,platform,sap|s/4hana|hana,ERP keywords,TRUE
+ENT-0012,Oracle,platform,oracle|oracle cloud|oci,Platform keywords,TRUE
