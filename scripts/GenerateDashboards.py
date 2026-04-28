@@ -2,13 +2,20 @@ import pandas as pd
 from datetime import datetime
 import os
 
-RISK_ENRICHED = "RiskCandidates_Enriched.csv"
-RISK_BASELINE = "RiskCandidates.csv"
-EVIDENCE = "EvidenceCache.csv"
-CLUSTERS = "IncidentClusters.csv"   # optional (for extra cluster fields)
+from pathlib import Path
 
-OUT_RISKS = "Dashboard_Risks.csv"
-OUT_EVIDENCE = "Dashboard_RiskEvidence.csv"
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = BASE_DIR / "data"
+OUTPUT_DIR = BASE_DIR / "outputs"
+
+
+RISK_ENRICHED = OUTPUT_DIR / "RiskCandidates_Enriched.csv"
+RISK_BASELINE = OUTPUT_DIR / "RiskCandidates.csv"
+EVIDENCE = OUTPUT_DIR / "EvidenceCache.csv"
+CLUSTERS = OUTPUT_DIR / "IncidentClusters.csv"   # optional (for extra cluster fields)
+
+OUT_RISKS = OUTPUT_DIR / "Dashboard_Risks.csv"
+OUT_EVIDENCE = OUTPUT_DIR / "Dashboard_RiskEvidence.csv"
 
 def to_bool(v) -> bool:
     if isinstance(v, bool):

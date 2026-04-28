@@ -3,9 +3,15 @@ from datetime import datetime, timezone
 import os
 import re
 
-RISK_CSV = "RiskCandidates.csv"
-OUTAGE_CSV = "Outage_Input.csv"          # optional but we want to use it now
-OUTPUT_CSV = "RiskCandidates_Enriched.csv"
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = BASE_DIR / "data"
+OUTPUT_DIR = BASE_DIR / "outputs"
+
+RISK_CSV = DATA_DIR / "RiskCandidates.csv"
+OUTAGE_CSV = DATA_DIR / "Outage_Input.csv" 
+OUTPUT_CSV = OUTPUT_DIR / "RiskCandidates_Enriched.csv"
 
 LOOKBACK_DAYS = 365
 

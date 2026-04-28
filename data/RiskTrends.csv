@@ -1,0 +1,1 @@
+report_run_id,report_date,risk_id,title,prior_score,current_score,delta_score,prior_confidence,current_confidence,prior_internal_signals,current_internal_signals,change_reason

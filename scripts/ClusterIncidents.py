@@ -4,8 +4,16 @@ from datetime import datetime
 from difflib import SequenceMatcher
 from typing import Set, List, Optional, Dict
 
-EVIDENCE_CACHE = "EvidenceCache.csv"
-OUT_CLUSTERS = "IncidentClusters.csv"
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = BASE_DIR / "data"
+OUTPUT_DIR = BASE_DIR / "outputs"
+
+SEARCH_PROFILES_CSV = DATA_DIR / "SearchProfiles.csv"
+ENTITY_DICTIONARY_CSV = DATA_DIR / "EntityDictionary.csv"
+EVIDENCE_CACHE_CSV = OUTPUT_DIR / "EvidenceCache.csv"
+OUT_CLUSTERS =  DATA_DIR / "IncidentClusters.csv"
 
 RELEVANCE_MIN = 0.2
 SCORE_MERGE = 0.72
@@ -323,7 +331,7 @@ def clusters_to_df(clusters: List[Cluster]) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 def main():
-    df = pd.read_csv(EVIDENCE_CACHE)
+    df = pd.read_csv(EVIDENCE_CACHE_CSV)
 
     clusters = cluster_from_evidence(df)
     out = clusters_to_df(clusters)

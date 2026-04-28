@@ -1,9 +1,15 @@
 import pandas as pd
 from datetime import datetime
 
-CLUSTERS_CSV = "IncidentClusters.csv"
-EVIDENCE_CSV = "EvidenceCache.csv"
-OUTPUT_CSV = "IncidentScenarios.csv"
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = BASE_DIR / "data"
+OUTPUT_DIR = BASE_DIR / "outputs"
+
+CLUSTERS_CSV =  OUTPUT_DIR / "IncidentClusters.csv"
+EVIDENCE_CSV = OUTPUT_DIR / "EvidenceCache.csv"
+OUTPUT_CSV = OUTPUT_DIR / "IncidentScenarios.csv"
 
 
 # --- Scenario Templates ---

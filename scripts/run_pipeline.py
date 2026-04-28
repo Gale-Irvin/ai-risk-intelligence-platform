@@ -8,8 +8,10 @@ BASE_DIR = Path(__file__).resolve().parent
 STEPS = [
     "Intake.py",
     "ClusterIncidents.py",
+    "ExtractIncidentScenarios.py",
     "GenerateRiskCandidates.py",
     "EnrichRiskCandidates.py",
+    "ScoreDRScenarios.py",
     "GenerateReports.py",
     "GenerateDashboards.py",
 ]

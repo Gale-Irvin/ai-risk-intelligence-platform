@@ -16,7 +16,7 @@ Recovery Focus: Restore from backup, validate integrity, rebuild systems, isolat
 
 ## Ransomware disrupts operations and recovery capability
 Score: 15 (L=1 I=5 S=3)
-Incident: Anubis: A Closer Look at an Emerging Ransomware with Built-in Wiper - www.trendmicro.com
+Incident: No title available
 Impact: Systems become unavailable, operations halt, recovery timelines increase
 Recovery Focus: Restore from backup, validate integrity, rebuild systems, isolate network
 

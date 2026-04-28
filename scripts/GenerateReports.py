@@ -4,13 +4,19 @@ import os
 import uuid
 import shutil
 
-ENRICHED = "RiskCandidates_Enriched.csv"
-BASELINE = "RiskCandidates.csv"
+from pathlib import Path
 
-OUT_REPORT_CSV = "RiskReport.csv"
-OUT_TRENDS_CSV = "RiskTrends.csv"
-OUT_REPORT_MD = "RiskReport.md"
-HISTORY_DIR = "history"
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = BASE_DIR / "data"
+OUTPUT_DIR = BASE_DIR / "outputs"
+
+ENRICHED = OUTPUT_DIR / "RiskCandidates_Enriched.csv"
+BASELINE = OUTPUT_DIR / "RiskCandidates.csv"
+
+OUT_REPORT_CSV = OUTPUT_DIR / "RiskReport.csv"
+OUT_TRENDS_CSV = OUTPUT_DIR / "RiskTrends.csv"
+OUT_REPORT_MD = OUTPUT_DIR / "RiskReport.md"
+HISTORY_DIR = OUTPUT_DIR / "history"
 
 TOP_N = 10
 CHANGE_THRESHOLD = 3  # abs(delta_score) >= this
@@ -159,7 +165,26 @@ def build_trends(current_report: pd.DataFrame) -> pd.DataFrame:
     return out.sort_values(by=["delta_score"], ascending=False)
 
 def write_markdown(report: pd.DataFrame, trends: pd.DataFrame, report_date: str):
-    top = report.head(TOP_N).copy()
+
+    # Consolidate duplicate scenario themes before selecting the Top 10.
+    # This keeps the executive report from repeating the same risk theme
+    # several times when multiple incidents map to the same scenario.
+    top = (
+        report
+        .sort_values(
+            by=["score_used", "evidence_strength", "confidence"],
+            ascending=[False, False, False]
+        )
+        .drop_duplicates(
+            subset=["title", "risk_category", "business_function"],
+            keep="first"
+        )
+        .head(TOP_N)
+        .copy()
+    )
+
+    # Re-rank after deduplication
+    top["rank"] = range(1, len(top) + 1)
 
     lines = []
     lines.append("# AI Risk Assessment – Executive Brief")
@@ -167,7 +192,7 @@ def write_markdown(report: pd.DataFrame, trends: pd.DataFrame, report_date: str)
     lines.append(f"- Total risks evaluated: {len(report)}")
     lines.append("")
 
-    lines.append(f"## Top {min(TOP_N, len(top))} risks")
+    lines.append(f"## Top {min(TOP_N, len(top))} risk themes")
     for _, r in top.iterrows():
         lines.append(f"### {int(r['rank'])}. {r['title']}")
         lines.append(f"- Score: {int(r['score_used'])} (L={int(r['likelihood_used'])}, I={int(r['impact_used'])})")

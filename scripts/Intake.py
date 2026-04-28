@@ -8,8 +8,15 @@ import re
 import os
 from typing import List, Dict, Optional, Set
 
-SEARCH_PROFILES_CSV = "SearchProfiles.csv"
-EVIDENCE_CACHE_CSV = "EvidenceCache.csv"
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = BASE_DIR / "data"
+OUTPUT_DIR = BASE_DIR / "outputs"
+
+SEARCH_PROFILES_CSV = DATA_DIR / "SearchProfiles.csv"
+ENTITY_DICTIONARY_CSV = DATA_DIR / "EntityDictionary.csv"
+OUTPUT_CSV = OUTPUT_DIR / "EvidenceCache.csv"
 
 # ------------ Controlled vocab (MVP) ------------
 EVENT_TERMS = {
@@ -227,8 +234,8 @@ def load_profiles() -> pd.DataFrame:
     return df
 
 def load_existing_cache() -> pd.DataFrame:
-    if os.path.exists(EVIDENCE_CACHE_CSV):
-        return pd.read_csv(EVIDENCE_CACHE_CSV)
+    if os.path.exists(OUTPUT_CSV):
+        return pd.read_csv(OUTPUT_CSV)
     return pd.DataFrame(columns=[
         "evidence_id","profile_id","search_query","source_type","publisher","title","published_date",
         "ingested_date","url","normalized_title","raw_snippet","normalized_snippet",
@@ -338,8 +345,8 @@ def run_intake():
 
     df_new = pd.DataFrame(new_rows)
 
-    df_new.to_csv(EVIDENCE_CACHE_CSV, index=False)
-    print(f"Wrote {len(df_new)} rows to {EVIDENCE_CACHE_CSV} (fresh run).")
+    df_new.to_csv(OUTPUT_CSV, index=False)
+    print(f"Wrote {len(df_new)} rows to {OUTPUT_CSV} (fresh run).")
 
 if __name__ == "__main__":
     run_intake()

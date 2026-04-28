@@ -4,9 +4,15 @@ import re
 import hashlib
 from typing import List
 
-CLUSTERS_CSV = "IncidentClusters.csv"
-EVIDENCE_CSV = "EvidenceCache.csv"   # optional (for nicer executive summaries)
-OUTPUT_CSV = "RiskCandidates.csv"
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = BASE_DIR / "data"
+OUTPUT_DIR = BASE_DIR / "outputs"
+
+CLUSTERS_CSV = DATA_DIR / "IncidentClusters.csv"
+OUTPUT_CSV = DATA_DIR / "RiskCandidates.csv"
+EVIDENCE_CSV = OUTPUT_DIR / "EvidenceCache.csv"
 
 # --- Mappings (deterministic MVP) ---
 EVENT_TO_CATEGORY = {

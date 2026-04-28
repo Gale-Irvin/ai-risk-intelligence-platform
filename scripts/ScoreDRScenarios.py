@@ -1,9 +1,15 @@
 import pandas as pd
 
-SCENARIOS_CSV = "IncidentScenarios.csv"
-ENV_CSV = "EnvironmentProfile.csv"
-OUTPUT_CSV = "IncidentScenarios_Scored.csv"
-REPORT_MD = "DRScenarioReport.md"
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = BASE_DIR / "data"
+OUTPUT_DIR = BASE_DIR / "outputs"
+
+SCENARIOS_CSV = OUTPUT_DIR / "IncidentScenarios.csv"
+ENV_CSV = DATA_DIR / "EnvironmentProfile.csv"
+OUTPUT_CSV = OUTPUT_DIR / "IncidentScenarios_Scored.csv"
+REPORT_MD = OUTPUT_DIR / "DRScenarioReport.md"
 
 
 def calculate_similarity(row, env):
